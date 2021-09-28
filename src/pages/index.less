@@ -4,9 +4,64 @@
   .page_1,
   .page_2 {
     height: 100vh;
+    width: 100vw;
   }
   .page_1 {
     background: rgb(121, 242, 157);
+    overflow: hidden;
+    .page_1_List_changing {
+      transition: 1s;
+    }
+    .page_1_List {
+      // width: 200vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      height: 100vh;
+      width: 200vw;
+      position: absolute;
+      // transition: 1s;
+      position: relative;
+
+      .page_1_List_left,
+      .page_1_List_right {
+        // width: 100%;
+        // position: absolute;
+        width: 100vw;
+        float: left;
+        height: 100vh;
+        // height: 100%;
+      }
+      .page_1_List_left {
+        // background-color: cornflowerblue;
+        background-image: url(../assets//images//header_1.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        .button_goto_right {
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          background-color: darkgray;
+          top: 50%;
+          left: 100%;
+          margin-top: -150px;
+          margin-left: -300px;
+        }
+        .self_introduction {
+          // margin: 0 auto;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+        }
+      }
+
+      .page_1_List_right {
+        // left: 100%;
+        background-color: rgb(111, 237, 100);
+      }
+    }
   }
   .page_2 {
     background-color: brown;
