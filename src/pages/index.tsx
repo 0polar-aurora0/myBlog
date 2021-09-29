@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-09-28 15:25:22
+ * @LastEditTime: 2021-09-29 11:51:25
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -9,12 +9,13 @@
  */
 
 import React, { Component } from 'react';
-import { Button, Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Button, Avatar, Divider } from 'antd';
+import { UserOutlined, CaretDownOutlined } from '@ant-design/icons';
 import $ from 'jquery';
 import _ from 'lodash';
-import './index.less';
+import PageContent from './pageContent/index';
 
+import './index.less';
 import styles from './index.less';
 
 export default class index extends Component {
@@ -86,18 +87,60 @@ export default class index extends Component {
             }`}
           >
             <div className={styles.page_1_List_left}>
-              <div className={styles.button_goto_right}>
+              {/* <div className={styles.button_goto_right}>
                 <Button onClick={this.handleClick}>跳转</Button>
-              </div>
+              </div> */}
               <div className={styles.self_introduction}>
                 <Avatar size={128} icon={<UserOutlined />} />
-                <p>page_1_left</p>
+                <p className={styles.introduction_title}>博客</p>
+                <p className={styles.introduction_quotes}>千里之行,始于足下</p>
+                <p className={styles.introduction_cardTitle}>精选主题</p>
+                <div className={styles.introduction_cardLists}>
+                  <div className={styles.card}>
+                    <div className={styles.card_title}>Node.js</div>
+                    <div className={styles.card_info}>
+                      Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
+                    </div>
+                  </div>
+                  <div className={styles.card}>
+                    <div className={styles.card_title}>React.js</div>
+                    <div className={styles.card_info}>
+                      Node.js是一个事件驱动I/React 使创建交互式 UI
+                      变得轻而易举。为你应用的每一个状态设计简洁的视图，当数据变动时
+                      React 能高效更新并渲染合适的组件。
+                    </div>
+                  </div>
+                  <div className={styles.card}>
+                    <div className={styles.card_title}>Node.js</div>
+                    <div className={styles.card_info}>
+                      Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
+                    </div>
+                  </div>
+                  <div className={styles.card}>
+                    <div className={styles.card_title}>C#</div>
+                    <div className={styles.card_info}>
+                      Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
+                    </div>
+                  </div>
+                  <div className={styles.card}>
+                    <div className={styles.card_title}>Electron.js</div>
+                    <div className={styles.card_info}>
+                      Node.js是一个事件驱动I/O服务端JavaScrip.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.button_to_blogContent}>
+                <CaretDownOutlined
+                  style={{ fontSize: '32px', color: 'white' }}
+                />
               </div>
             </div>
             <div className={styles.page_1_List_right}>page_1_right</div>
           </div>
         </div>
-        {/* <div className={styles.page_2}>page_2</div> */}
+        <PageContent />
+        <div className={styles.page_2}></div>
       </div>
     );
   }

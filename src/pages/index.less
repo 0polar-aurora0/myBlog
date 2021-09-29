@@ -51,9 +51,110 @@
         }
         .self_introduction {
           // margin: 0 auto;
+          width: 800px;
+          // height: 200px;
+          height: auto;
           position: absolute;
           left: 50%;
-          top: 50%;
+          top: 5%;
+          display: flex;
+          flex-direction: column;
+          /* flex-wrap: nowrap; */
+          justify-content: space-evenly;
+          align-content: center;
+          align-items: center;
+          margin-left: -400px;
+          p {
+            margin: 0;
+          }
+          .introduction_title {
+            color: rgb(0 0 0, 0.5);
+            font-size: 35px;
+          }
+          .introduction_quotes {
+            color: rgb(0 0 0, 0.5);
+            font-size: 25px;
+            width: 300px;
+            text-align: center;
+            word-break: break-all;
+            font-family: cursive;
+          }
+          .introduction_cardTitle {
+            width: 100%;
+            border-bottom: 1px solid white;
+            padding: 30px 0;
+            font-size: 35px;
+            text-align: center;
+          }
+          .introduction_cardLists {
+            // margin-top: 100px;
+            width: 1020px;
+            height: auto;
+            // min-height: 500px;
+            // position: absolute;
+            // left: 50%;
+            // margin-left: -400px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            .card {
+              // box-sizing: border-box;
+              width: 300px;
+              height: 160px;
+              margin: 20px;
+              padding: 0 15px;
+              border-radius: 15px;
+              background-color: rgba(255, 255, 255, 0.5);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .card_title {
+                font-size: 30px;
+                cursor: pointer;
+                color: rgb(54, 54, 54);
+              }
+              .card_info {
+                color: white;
+                overflow: hidden;
+                font-size: 17px;
+                text-overflow: ellipsis;
+                display: -webkit-box; // 作为弹性伸缩盒子模型显示。
+                -webkit-box-orient: vertical; // 设置伸缩盒子的子元素排列方式--从上到下垂直排列
+                -webkit-line-clamp: 4;
+              }
+              // background-color: saddlebrown;
+            }
+          }
+        }
+        .button_to_blogContent {
+          width: 30px;
+          height: 30px;
+          position: relative;
+          opacity: 0.5;
+          // background-color: yellow;
+          left: 50%;
+          margin-left: -15px;
+          // top: 100%;
+          margin-top: -30px;
+          animation: buttonJump 1.5s infinite;
+          animation-direction: alternate;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+        }
+
+        @keyframes buttonJump {
+          from {
+            top: 95%;
+          }
+
+          to {
+            top: 100%;
+          }
         }
       }
 
