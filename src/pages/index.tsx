@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-09-29 11:51:25
+ * @LastEditTime: 2021-09-30 14:58:04
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -9,7 +9,7 @@
  */
 
 import React, { Component } from 'react';
-import { Button, Avatar, Divider } from 'antd';
+import { Button, Avatar, Divider, Anchor } from 'antd';
 import { UserOutlined, CaretDownOutlined } from '@ant-design/icons';
 import $ from 'jquery';
 import _ from 'lodash';
@@ -18,6 +18,7 @@ import PageContent from './pageContent/index';
 import './index.less';
 import styles from './index.less';
 
+const { Link } = Anchor;
 export default class index extends Component {
   state = {
     localPage: 0,
@@ -128,19 +129,34 @@ export default class index extends Component {
                       Node.js是一个事件驱动I/O服务端JavaScrip.
                     </div>
                   </div>
+                  <div className={styles.card_special_box}>
+                    <div className={styles.card_special_container}>
+                      <div className={styles.card_title}>Error</div>
+                      {/* <div className={styles.card_info}>
+                        Error
+                      </div> */}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className={styles.button_to_blogContent}>
-                <CaretDownOutlined
-                  style={{ fontSize: '32px', color: 'white' }}
-                />
+                <Anchor>
+                  <Link
+                    href="#pageContent"
+                    title={
+                      <CaretDownOutlined
+                        style={{ fontSize: '32px', color: 'white' }}
+                      />
+                    }
+                  />
+                </Anchor>
               </div>
             </div>
             <div className={styles.page_1_List_right}>page_1_right</div>
           </div>
         </div>
         <PageContent />
-        <div className={styles.page_2}></div>
+        {/* <div className={styles.page_2}></div> */}
       </div>
     );
   }

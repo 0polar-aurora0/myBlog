@@ -50,12 +50,12 @@
           margin-left: -300px;
         }
         .self_introduction {
-          // margin: 0 auto;
-          width: 800px;
+          margin: 0 auto;
+          max-width: 1200px;
           // height: 200px;
           height: auto;
-          position: absolute;
-          left: 50%;
+          // position: absolute;
+          // left: 50%;
           top: 5%;
           display: flex;
           flex-direction: column;
@@ -63,7 +63,7 @@
           justify-content: space-evenly;
           align-content: center;
           align-items: center;
-          margin-left: -400px;
+          // margin-left: -400px;
           p {
             margin: 0;
           }
@@ -88,7 +88,7 @@
           }
           .introduction_cardLists {
             // margin-top: 100px;
-            width: 1020px;
+            // width: 1020px;
             height: auto;
             // min-height: 500px;
             // position: absolute;
@@ -97,19 +97,16 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             .card {
-              // box-sizing: border-box;
-              width: 300px;
-              height: 160px;
-              margin: 20px;
+              // border-radius: 15px;
               padding: 0 15px;
-              border-radius: 15px;
-              background-color: rgba(255, 255, 255, 0.5);
               display: flex;
               flex-direction: column;
               align-items: center;
+              background-color: rgba(255, 255, 255, 0.5);
+              border-radius: 15px;
               .card_title {
                 font-size: 30px;
                 cursor: pointer;
@@ -124,14 +121,64 @@
                 -webkit-box-orient: vertical; // 设置伸缩盒子的子元素排列方式--从上到下垂直排列
                 -webkit-line-clamp: 4;
               }
-              // background-color: saddlebrown;
+            }
+            .card,
+            .card_special_box {
+              width: 300px;
+              height: 160px;
+              margin: 20px;
+            }
+            .card_special_box {
+              perspective: 1200px;
+              background-color: black;
+              border-top-right-radius: 15px;
+              border-bottom-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+              .card_special_container {
+                border-top-right-radius: 15px;
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+                width: 100%;
+                height: 100%;
+                background-color: white;
+                // transform: rotateY(-68deg);
+                transform-origin: 0% 0%;
+                // animation: card_special_container_twinkle 1.5s infinite 1s ;
+                // animation-direction: alternate;
+                animation: card_special_container_drop 1s infinite 5s,
+                  card_special_container_twinkle 3s infinite 6s alternate;
+
+                .card_title {
+                  text-align: center;
+                  font-size: 100px;
+                }
+                @keyframes card_special_container_twinkle {
+                  from {
+                    transform: rotate3d(0, 0.1, -0.2, -68deg);
+                    opacity: 1;
+                  }
+
+                  to {
+                    transform: rotate3d(0, 0.2, -0.2, -68deg);
+                    opacity: 0.8;
+                  }
+                }
+                @keyframes card_special_container_drop {
+                  from {
+                    transform: rotate3d(0, 0, -0, 0deg);
+                  }
+                  to {
+                    transform: rotate3d(0, 0.1, -0.2, -68deg);
+                  }
+                }
+              }
             }
           }
         }
         .button_to_blogContent {
           width: 30px;
           height: 30px;
-          position: relative;
+          position: absolute;
           opacity: 0.5;
           // background-color: yellow;
           left: 50%;
