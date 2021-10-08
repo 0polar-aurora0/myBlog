@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-09-30 14:58:04
+ * @LastEditTime: 2021-10-08 17:45:08
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -130,11 +130,14 @@ export default class index extends Component {
                     </div>
                   </div>
                   <div className={styles.card_special_box}>
-                    <div className={styles.card_special_container}>
-                      <div className={styles.card_title}>Error</div>
+                    <div className={styles.card_special_container_frontBoard}>
+                      <div className={styles.card_error}>Error</div>
                       {/* <div className={styles.card_info}>
                         Error
                       </div> */}
+                    </div>
+                    <div className={styles.card_special_container_ground}>
+                      {/* <div className={styles.card_error}>Error</div> */}123
                     </div>
                   </div>
                 </div>
