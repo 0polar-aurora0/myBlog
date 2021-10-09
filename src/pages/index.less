@@ -133,36 +133,37 @@
               margin: 20px;
             }
             .card_special_box {
+              transform-style: preserve-3d;
               perspective: 1200px;
-              background-color: black;
+              // transform-style: preserve-3d;
+              // background-color: black;
               border-top-right-radius: 15px;
               border-bottom-left-radius: 15px;
               border-bottom-right-radius: 15px;
-              .card_special_container_frontBoard,
-              .card_special_container_ground {
+              .box_piece {
                 width: 100%;
                 height: 100%;
                 position: absolute;
+                user-select: none;
               }
-              .card_special_container_frontBoard {
-                border-top-right-radius: 15px;
-                border-bottom-left-radius: 15px;
-                border-bottom-right-radius: 15px;
+              .box_piece1_front {
+                // border-top-right-radius: 15px;
+                // border-bottom-left-radius: 15px;
+                // border-bottom-right-radius: 15px;
                 // background-color: white;
                 background-image: url(../assets/images/card_front.png);
                 // transform: rotateY(-68deg);
                 transform-origin: 0% 0%;
-                // animation: card_special_container_frontBoard_twinkle 1.5s infinite 1s ;
+                // animation: box_piece1_front_twinkle 1.5s infinite 1s ;
                 // animation-direction: alternate;
-                animation: card_special_container_frontBoard_drop 1s infinite 5s,
-                  card_special_container_frontBoard_twinkle 3s infinite 6s
-                    alternate;
+                animation: box_piece1_front_drop 1s infinite 5s,
+                  box_piece1_front_twinkle 3s infinite 6s alternate;
 
                 .card_error {
                   text-align: center;
                   font-size: 100px;
                 }
-                @keyframes card_special_container_frontBoard_twinkle {
+                @keyframes box_piece1_front_twinkle {
                   from {
                     transform: rotate3d(0, 0.1, -0.2, -68deg);
                     opacity: 1;
@@ -173,7 +174,7 @@
                     opacity: 0.8;
                   }
                 }
-                @keyframes card_special_container_frontBoard_drop {
+                @keyframes box_piece1_front_drop {
                   from {
                     transform: rotate3d(0, 0, -0, 0deg);
                   }
@@ -182,9 +183,37 @@
                   }
                 }
               }
-              .card_special_container_ground {
-                background-color: white;
-                transform-origin: 0% 0%;
+              .box_piece2_right {
+                transform: rotateY(-270deg) translateX(320px);
+                transform-origin: top right;
+                // background-image: url(../assets/images/box_left.png);
+                background-color: black;
+              }
+              .box_piece3_back {
+                transform: translateZ(-320px) rotateY(180deg);
+                background-image: url(../assets/images/box_back_door.png),
+                  url(../assets/images/box_back.png);
+                background-size: 25%, 100%;
+                background-repeat: no-repeat;
+                background-position: 10% center, center;
+              }
+              .box_piece4_left {
+                transform: rotateY(270deg) translateX(-320px);
+                transform-origin: center left;
+                // background-color: brown;
+                // background-image: url(../assets/images/box_left.png);
+                background-color: black;
+              }
+              .box_piece5_top {
+                transform: rotateX(-90deg) translateY(0px) scaleY(2);
+                transform-origin: top center;
+                // background-image: url(../assets/images/box_back.png);
+                background-color: black;
+              }
+              .box_piece6_bottom {
+                transform: rotateX(90deg) translateY(0px) scaleY(2);
+                transform-origin: bottom center;
+                background-image: url(../assets/images/box_left.png);
               }
             }
           }

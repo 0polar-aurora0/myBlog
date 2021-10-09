@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-10-08 17:45:08
+ * @LastEditTime: 2021-10-09 16:31:17
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -19,9 +19,14 @@ import './index.less';
 import styles from './index.less';
 
 const { Link } = Anchor;
+
+const perspective_origin_center_X = 160,
+  perspective_origin_center_Y = 80;
 export default class index extends Component {
   state = {
     localPage: 0,
+    perspective_origin_X: perspective_origin_center_X,
+    perspective_origin_Y: perspective_origin_center_Y,
   };
 
   componentDidMount() {
@@ -73,6 +78,24 @@ export default class index extends Component {
     // let { localPage } = this.state;
     this.setState({
       localPage: 1,
+    });
+  };
+
+  onMouseMoveHandle = () => {
+    const event = window.event;
+    // console.log(event.layerX);
+    event.layerX > 0 &&
+      event.layerY > 0 &&
+      this.setState({
+        perspective_origin_X: event.layerX,
+        perspective_origin_Y: event.layerY,
+      });
+  };
+
+  onMouseLeaveHandle = () => {
+    this.setState({
+      perspective_origin_X: perspective_origin_center_X,
+      perspective_origin_Y: perspective_origin_center_Y,
     });
   };
 
@@ -129,16 +152,34 @@ export default class index extends Component {
                       Node.js是一个事件驱动I/O服务端JavaScrip.
                     </div>
                   </div>
-                  <div className={styles.card_special_box}>
-                    <div className={styles.card_special_container_frontBoard}>
+                  <div
+                    onMouseMove={this.onMouseMoveHandle}
+                    onMouseLeave={this.onMouseLeaveHandle}
+                    style={{
+                      perspectiveOrigin: `${this.state.perspective_origin_X}px ${this.state.perspective_origin_Y}px`,
+                    }}
+                    className={styles.card_special_box}
+                  >
+                    <div
+                      className={`${styles.box_piece1_front} ${styles.box_piece}`}
+                    >
                       <div className={styles.card_error}>Error</div>
-                      {/* <div className={styles.card_info}>
-                        Error
-                      </div> */}
                     </div>
-                    <div className={styles.card_special_container_ground}>
-                      {/* <div className={styles.card_error}>Error</div> */}123
-                    </div>
+                    <div
+                      className={`${styles.box_piece2_right} ${styles.box_piece}`}
+                    ></div>
+                    <div
+                      className={`${styles.box_piece3_back} ${styles.box_piece}`}
+                    ></div>
+                    <div
+                      className={`${styles.box_piece4_left} ${styles.box_piece}`}
+                    ></div>
+                    <div
+                      className={`${styles.box_piece5_top} ${styles.box_piece}`}
+                    ></div>
+                    <div
+                      className={`${styles.box_piece6_bottom} ${styles.box_piece}`}
+                    ></div>
                   </div>
                 </div>
               </div>
