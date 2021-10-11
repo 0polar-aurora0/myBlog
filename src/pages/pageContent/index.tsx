@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-09 17:23:43
+ * @LastEditTime: 2021-10-11 15:46:06
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -42,12 +42,12 @@ export default class index extends Component {
     });
   };
 
-  check_article_detail = (article) => {
+  check_article_detail = (article: { key: any }) => {
     history.push({
-      pathname: '/article',
-      query: {
-        article: article.key,
-      },
+      pathname: `/articlePage/:${article.key}`,
+      // query: {
+      //   article: article.key,
+      // },
     });
   };
 
