@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-11 15:46:06
+ * @LastEditTime: 2021-10-12 11:10:05
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -15,7 +15,7 @@ import {
   YoutubeOutlined,
   SketchOutlined,
 } from '@ant-design/icons';
-
+import { HeaderLists } from '@/components/index';
 import picture_1 from '../../assets/images/card_front.png';
 
 import styles from './index.less';
@@ -66,6 +66,48 @@ export default class index extends Component {
     function onPanelChange(value, mode) {
       console.log(value, mode);
     }
+    let headerLists_config = {
+      headerLeftLists: [
+        {
+          title: 'react',
+          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          childrenList: [],
+        },
+        {
+          title: 'vue',
+          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          childrenList: [],
+        },
+        {
+          title: 'angular',
+          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          childrenList: [],
+        },
+      ],
+      headerRightLists: [
+        {
+          link: 'https://github.com/0polar-aurora0',
+          title: 'Github',
+          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+        },
+        {
+          title: 'bilibili',
+          icon: <YoutubeOutlined style={{ fontSize: '16px' }} />,
+        },
+        {
+          title: '掘金',
+          icon: <SketchOutlined style={{ fontSize: '16px' }} />,
+        },
+        {
+          title: '知乎',
+          icon: <WechatOutlined style={{ fontSize: '16px' }} />,
+        },
+        {
+          title: '知乎',
+          icon: <ZhihuOutlined style={{ fontSize: '16px' }} />,
+        },
+      ],
+    };
 
     const articleList = [
       {
@@ -108,90 +150,8 @@ export default class index extends Component {
 
     return (
       <div id="pageContent" className={styles.pageContent}>
-        <div className={styles.pageContent_header}>
-          <div className={styles.header_container}>
-            <div className={styles.menuLists}>
-              <div
-                onMouseOver={this.onMouseOverHandle.bind(this, 'react')}
-                onMouseLeave={this.onMouseLeaveHandle}
-                className={styles.menuArea}
-              >
-                <GithubOutlined style={{ fontSize: '16px' }} />
-                <p>react</p>
-              </div>
-              <div
-                onMouseOver={this.onMouseOverHandle.bind(this, 'vue')}
-                onMouseLeave={this.onMouseLeaveHandle}
-                className={styles.menuArea}
-              >
-                <YoutubeOutlined
-                  style={{ fontSize: '16px', color: 'rgb(251 114 153)' }}
-                  onMouseLeave={this.onMouseLeaveHandle}
-                />
-                <p>vue</p>
-              </div>
-              <div
-                onMouseOver={this.onMouseOverHandle.bind(this, 'angular')}
-                onMouseLeave={this.onMouseLeaveHandle}
-                className={styles.menuArea}
-              >
-                <SketchOutlined style={{ fontSize: '16px' }} />
-                <p>angular</p>
-              </div>
-              <div
-                onMouseOver={this.onMouseOverHandle.bind(this, 'nginx')}
-                onMouseLeave={this.onMouseLeaveHandle}
-                className={styles.menuArea}
-              >
-                <ZhihuOutlined
-                  style={{ fontSize: '16px', color: 'rgb(56, 103, 233)' }}
-                />
-                <p>nginx</p>
-              </div>
-            </div>
-            <div className={styles.badgeLists}>
-              <div className={styles.badgeArea}>
-                <GithubOutlined
-                  style={{ fontSize: '16px', color: 'rgb(0,0,0)' }}
-                />
-                <a
-                  target="_blank"
-                  href="https://github.com/0polar-aurora0"
-                  style={{ color: 'rgb(0,0,0)' }}
-                >
-                  Github
-                </a>
-              </div>
-              <div className={styles.badgeArea}>
-                <YoutubeOutlined
-                  style={{ fontSize: '16px', color: 'rgb(251 114 153)' }}
-                />
-                <a style={{ color: 'rgb(251 114 153)' }}>bilibili</a>
-              </div>
-              <div className={styles.badgeArea}>
-                <SketchOutlined style={{ fontSize: '16px' }} />
-                <a>掘金</a>
-              </div>
-              <div className={styles.badgeArea}>
-                <WechatOutlined
-                  style={{ fontSize: '16px', color: 'rgb(47 239 34)' }}
-                />
-                <a style={{ color: 'rgb(47 239 34)' }}>微信</a>
-              </div>
-              <div className={styles.badgeArea}>
-                <ZhihuOutlined
-                  style={{ fontSize: '16px', color: 'rgb(56, 103, 233)' }}
-                />
-                <a style={{ color: 'rgb(56, 103, 233)' }}>知乎</a>
-              </div>
-            </div>
-            {local_menuListDetail && (
-              <div className={styles.menuListDetail}>
-                {local_menuListDetail}
-              </div>
-            )}
-          </div>
-        </div>
+        <HeaderLists {...headerLists_config} />
+
         <div className={styles.pageContent_content}>
           <div className={styles.content_conatiner}>
             <div className={styles.content_left}>
