@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-12 15:28:54
+ * @LastEditTime: 2021-10-13 17:05:50
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -9,6 +9,9 @@
  */
 import React, { Component } from 'react';
 import styles from './id.less';
+// import ReactMarkdown from "react-markdown";
+
+import { MarkDown } from '@/components/index';
 
 import {
   FieldTimeOutlined,
@@ -16,6 +19,9 @@ import {
   CodeOutlined,
   LikeOutlined,
 } from '@ant-design/icons';
+
+let mackdown_content = require('@/assets/mackdown/mackdown_test.md').default;
+console.log(mackdown_content);
 
 export default class index extends Component {
   componentDidMount() {
@@ -44,6 +50,9 @@ export default class index extends Component {
               老子觉得很赞, 给你点个赞
             </div>
           </div>
+        </div>
+        <div className={styles.article_content}>
+          <MarkDown mackdown_content={mackdown_content} />
         </div>
       </div>
     );
