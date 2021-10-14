@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-14 16:01:12
+ * @LastEditTime: 2021-10-14 17:17:20
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -48,11 +48,11 @@ export default class index extends Component {
     });
   };
 
-  check_article_detail = (article: { key: any }) => {
+  check_article_detail = (article: { id: any }) => {
     history.push({
-      pathname: `/articlePage/:${article.key}`,
+      pathname: `/articlePage/:${article.id}`,
       // query: {
-      //   article: article.key,
+      //   article: article.id,
       // },
     });
   };
@@ -125,37 +125,37 @@ export default class index extends Component {
 
     const articleList = [
       {
-        key: 0,
+        id: 0,
         title: 'js滚动效果实现',
         date: '1999-09-12',
         introduce: '这是一个关于js滚动效果实现的文章',
       },
       {
-        key: 1,
+        id: 1,
         title: 'js滚动效果实现',
         date: '1999-09-12',
         introduce: '这是一个关于js滚动效果实现的文章',
       },
       {
-        key: 2,
+        id: 2,
         title: 'js滚动效果实现',
         date: '1999-09-12',
         introduce: '这是一个关于js滚动效果实现的文章',
       },
       {
-        key: 3,
+        id: 3,
         title: 'js滚动效果实现',
         date: '1999-09-12',
         introduce: '这是一个关于js滚动效果实现的文章',
       },
       {
-        key: 4,
+        id: 4,
         title: 'js滚动效果实现',
         date: '1999-09-12',
         introduce: '这是一个关于js滚动效果实现的文章',
       },
       {
-        key: 5,
+        id: 5,
         title: 'js滚动效果实现',
         date: '1999-09-12',
         introduce: '这是一个关于js滚动效果实现的文章',
