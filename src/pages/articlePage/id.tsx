@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-13 17:05:50
+ * @LastEditTime: 2021-10-14 13:47:38
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -18,6 +18,7 @@ import {
   UserOutlined,
   CodeOutlined,
   LikeOutlined,
+  EyeOutlined,
 } from '@ant-design/icons';
 
 let mackdown_content = require('@/assets/mackdown/mackdown_test.md').default;
@@ -36,6 +37,11 @@ export default class index extends Component {
             <div className={styles.detail_piece}>
               <FieldTimeOutlined />
               1999-09-12
+            </div>
+
+            <div className={styles.detail_piece}>
+              <EyeOutlined />
+              访问次数
             </div>
             <div className={styles.detail_piece}>
               <UserOutlined />

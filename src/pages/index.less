@@ -234,6 +234,14 @@
           justify-content: center;
           align-items: center;
           cursor: pointer;
+          :global {
+            .ant-anchor {
+              padding: 0;
+              .ant-anchor-ink {
+                display: none;
+              }
+            }
+          }
         }
 
         @keyframes buttonJump {

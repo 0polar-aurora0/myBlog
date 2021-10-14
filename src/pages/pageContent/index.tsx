@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-14 11:17:25
+ * @LastEditTime: 2021-10-14 15:33:02
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -69,18 +69,21 @@ export default class index extends Component {
     let headerLists_config = {
       headerLeftLists: [
         {
+          color: 'pink',
           title: 'react',
-          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          icon: <GithubOutlined style={{ fontSize: '16px', color: 'pink' }} />,
           childrenList: [],
         },
         {
+          color: 'green',
           title: 'vue',
-          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          icon: <GithubOutlined style={{ fontSize: '16px', color: 'green' }} />,
           childrenList: [],
         },
         {
+          color: 'green',
           title: 'angular',
-          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          icon: <GithubOutlined style={{ fontSize: '16px', color: 'green' }} />,
           childrenList: [],
         },
       ],
@@ -88,23 +91,28 @@ export default class index extends Component {
         {
           link: 'https://github.com/0polar-aurora0',
           title: 'Github',
-          icon: <GithubOutlined style={{ fontSize: '16px' }} />,
+          icon: <GithubOutlined style={{ fontSize: '16px', color: 'black' }} />,
         },
         {
+          color: 'pink',
+          link: 'https://github.com/0polar-aurora0',
           title: 'bilibili',
-          icon: <YoutubeOutlined style={{ fontSize: '16px' }} />,
+          icon: <YoutubeOutlined style={{ fontSize: '16px', color: 'pink' }} />,
         },
         {
           title: '掘金',
-          icon: <SketchOutlined style={{ fontSize: '16px' }} />,
+          color: 'blue',
+          icon: <SketchOutlined style={{ fontSize: '16px', color: 'blue' }} />,
         },
         {
           title: '微信',
-          icon: <WechatOutlined style={{ fontSize: '16px' }} />,
+          color: 'green',
+          icon: <WechatOutlined style={{ fontSize: '16px', color: 'green' }} />,
         },
         {
           title: '知乎',
-          icon: <ZhihuOutlined style={{ fontSize: '16px' }} />,
+          color: 'blue',
+          icon: <ZhihuOutlined style={{ fontSize: '16px', color: 'blue' }} />,
         },
       ],
     };
@@ -182,7 +190,16 @@ export default class index extends Component {
             <div className={styles.content_right}>
               <div className={styles.card}>
                 <h3>个人简介</h3>
-                本人昵称: 123456
+                <div className={styles.columnLists}>
+                  <div className={styles.columnList}>
+                    <p>本人昵称:</p>
+                    <p>123456</p>
+                  </div>
+                  <div className={styles.columnList}>
+                    <p>爱好:</p>
+                    <p>玩</p>
+                  </div>
+                </div>
               </div>
 
               <div className={styles.card}>

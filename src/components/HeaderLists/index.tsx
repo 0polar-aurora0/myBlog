@@ -1,21 +1,27 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-12 09:27:01
- * @LastEditTime: 2021-10-14 13:38:01
+ * @LastEditTime: 2021-10-14 14:30:49
  * @LastEditors: fuzhenghao
  * @Description: 导航条
  * @FilePath: \myBlog_frontEnd\src\components\HeaderLists\index.tsx
  *
  */
 import React, { Component } from 'react';
+import { history } from '_umi@3.5.20@umi';
 import styles from './index.less';
+
+type routeLink = {
+  routePath: string;
+  routeData?: {} | null | undefined;
+};
 
 type IList = {
   title: String;
   icon?: React.ReactElement;
   color?: String;
   childrenList?: Array<any>;
-  link?: String;
+  link?: String | routeLink;
 };
 
 type IProps = Readonly<{
@@ -26,7 +32,10 @@ type IProps = Readonly<{
 type IState = Readonly<{}>;
 
 export default class index extends Component<IProps, IState> {
-  state: IState = {};
+  constructor(props: IProps) {
+    super(props);
+    this.state = {};
+  }
 
   onMouseOverHandle = (local_menuListDetail: string) => {
     console.log(local_menuListDetail);
@@ -54,7 +63,7 @@ export default class index extends Component<IProps, IState> {
                     className={styles.menuArea}
                   >
                     {headerLeftList.icon}
-                    <p style={{ color: headerLeftList.color }}>
+                    <p style={{ color: headerLeftList.color || 'rgb(0,0,0)' }}>
                       {headerLeftList.title}
                     </p>
                   </div>
@@ -68,14 +77,21 @@ export default class index extends Component<IProps, IState> {
                 return (
                   <div className={styles.badgeArea}>
                     {headerRightList.icon}
-
-                    <a
-                      target="_blank"
-                      href={headerRightList.link as string}
-                      style={{ color: 'rgb(0,0,0)' }}
-                    >
-                      {headerRightList.title}
-                    </a>
+                    {typeof headerRightList.link === 'string' ? (
+                      <a
+                        target="_blank"
+                        href={headerRightList.link as string}
+                        style={{ color: headerRightList.color || 'rgb(0,0,0)' }}
+                      >
+                        {headerRightList.title}
+                      </a>
+                    ) : (
+                      <p
+                        onClick={() => {
+                          history.push(headerRightList.link);
+                        }}
+                      ></p>
+                    )}
                   </div>
                 );
               })}
