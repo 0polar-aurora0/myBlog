@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-14 15:33:02
+ * @LastEditTime: 2021-10-14 16:01:12
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -14,6 +14,12 @@ import {
   WechatOutlined,
   YoutubeOutlined,
   SketchOutlined,
+  TagsOutlined,
+  CalendarOutlined,
+  RobotOutlined,
+  ReadOutlined,
+  BookOutlined,
+  TagOutlined,
 } from '@ant-design/icons';
 import { HeaderLists } from '@/components/index';
 import picture_1 from '../../assets/images/card_front.png';
@@ -189,33 +195,105 @@ export default class index extends Component {
             </div>
             <div className={styles.content_right}>
               <div className={styles.card}>
-                <h3>个人简介</h3>
-                <div className={styles.columnLists}>
-                  <div className={styles.columnList}>
-                    <p>本人昵称:</p>
+                <h3>
+                  <RobotOutlined />
+                  个人简介
+                </h3>
+                <div className={styles.introduce_area_lists}>
+                  <div className={styles.introduce_area_list}>
+                    <p>昵称</p>
                     <p>123456</p>
                   </div>
-                  <div className={styles.columnList}>
-                    <p>爱好:</p>
+                  <div className={styles.introduce_area_list}>
+                    <p>爱好</p>
                     <p>玩</p>
+                  </div>
+                  <div className={styles.introduce_area_list}>
+                    <p>兴趣</p>
+                    <p>吃</p>
+                  </div>
+                  <div className={styles.introduce_area_list}>
+                    <p>擅长</p>
+                    <p>睡</p>
+                  </div>
+                </div>
+                <div className={styles.introduce_area_more}>
+                  了解更多关于博主
+                </div>
+              </div>
+
+              <div className={styles.card}>
+                <h3>
+                  <CalendarOutlined />
+                  日历
+                </h3>
+                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+              </div>
+              <div className={styles.card}>
+                <h3>
+                  <BookOutlined />
+                  随笔
+                </h3>
+              </div>
+
+              <div className={styles.card}>
+                <h3>
+                  <TagsOutlined />
+                  我的标签
+                </h3>
+                <div className={styles.myTag_area_lists}>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    做饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
+                  </div>
+                  <div className={styles.myTag_area_list}>
+                    <TagOutlined />
+                    吃饭
                   </div>
                 </div>
               </div>
 
               <div className={styles.card}>
-                <h3>日历</h3>
-                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-              </div>
-              <div className={styles.card}>
-                <h3>随笔</h3>
-              </div>
-
-              <div className={styles.card}>
-                <h3>我的标签</h3>
-              </div>
-
-              <div className={styles.card}>
-                <h3>我的日记</h3>
+                <h3>
+                  <ReadOutlined />
+                  我的日记
+                </h3>
               </div>
             </div>
           </div>

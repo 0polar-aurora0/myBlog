@@ -79,17 +79,43 @@
             margin: 0;
             font-weight: 700;
           }
-          .columnLists {
+          .introduce_area_lists {
             margin-top: 10px;
             display: flex;
             flex-direction: column;
-            .columnList {
+            .introduce_area_list {
               display: flex;
               flex-direction: row;
               margin: 10px 0;
               p {
                 margin: 0;
+                font-size: 16px;
               }
+              p:nth-child(1) {
+                min-width: 80px;
+              }
+              p:nth-child(2) {
+                margin-left: 16px;
+              }
+            }
+          }
+          .introduce_area_more {
+            cursor: pointer;
+            text-align: center;
+            font-size: 20px;
+          }
+          .myTag_area_lists {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .myTag_area_list {
+              margin-right: 20px;
+              margin-bottom: 20px;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
             }
           }
         }
