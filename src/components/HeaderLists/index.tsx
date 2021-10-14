@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-12 09:27:01
- * @LastEditTime: 2021-10-12 11:10:05
+ * @LastEditTime: 2021-10-14 13:38:01
  * @LastEditors: fuzhenghao
  * @Description: 导航条
  * @FilePath: \myBlog_frontEnd\src\components\HeaderLists\index.tsx
@@ -13,6 +13,7 @@ import styles from './index.less';
 type IList = {
   title: String;
   icon?: React.ReactElement;
+  color?: String;
   childrenList?: Array<any>;
   link?: String;
 };
@@ -53,7 +54,9 @@ export default class index extends Component<IProps, IState> {
                     className={styles.menuArea}
                   >
                     {headerLeftList.icon}
-                    <p>{headerLeftList.title}</p>
+                    <p style={{ color: headerLeftList.color }}>
+                      {headerLeftList.title}
+                    </p>
                   </div>
                 );
               })}

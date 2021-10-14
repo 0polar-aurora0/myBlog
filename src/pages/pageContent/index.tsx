@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-12 11:10:05
+ * @LastEditTime: 2021-10-14 11:17:25
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -99,7 +99,7 @@ export default class index extends Component {
           icon: <SketchOutlined style={{ fontSize: '16px' }} />,
         },
         {
-          title: '知乎',
+          title: '微信',
           icon: <WechatOutlined style={{ fontSize: '16px' }} />,
         },
         {
