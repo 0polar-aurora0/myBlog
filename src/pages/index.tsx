@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-10-14 10:00:09
+ * @LastEditTime: 2021-10-15 17:49:25
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -101,6 +101,40 @@ export default class index extends Component {
 
   render() {
     let { localPage } = this.state;
+
+    let card_data_lists = [
+      {
+        card_title: 'Node.js',
+        card_description:
+          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
+        card_backgroud_image: '',
+      },
+      {
+        card_title: 'React.js',
+        card_description:
+          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
+        card_backgroud_image: '',
+      },
+      {
+        card_title: 'C#',
+        card_description:
+          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
+        card_backgroud_image: '',
+      },
+      {
+        card_title: 'Electron.js',
+        card_description:
+          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
+        card_backgroud_image: '',
+      },
+      {
+        card_title: 'node.js',
+        card_description:
+          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
+        card_backgroud_image: '',
+      },
+    ];
+
     return (
       <div className={styles.index_page}>
         <div className={styles.page_1}>
@@ -120,38 +154,19 @@ export default class index extends Component {
                 <p className={styles.introduction_quotes}>千里之行,始于足下</p>
                 <p className={styles.introduction_cardTitle}>精选主题</p>
                 <div className={styles.introduction_cardLists}>
-                  <div className={styles.card}>
-                    <div className={styles.card_title}>Node.js</div>
-                    <div className={styles.card_info}>
-                      Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
-                    </div>
-                  </div>
-                  <div className={styles.card}>
-                    <div className={styles.card_title}>React.js</div>
-                    <div className={styles.card_info}>
-                      Node.js是一个事件驱动I/React 使创建交互式 UI
-                      变得轻而易举。为你应用的每一个状态设计简洁的视图，当数据变动时
-                      React 能高效更新并渲染合适的组件。
-                    </div>
-                  </div>
-                  <div className={styles.card}>
-                    <div className={styles.card_title}>Node.js</div>
-                    <div className={styles.card_info}>
-                      Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
-                    </div>
-                  </div>
-                  <div className={styles.card}>
-                    <div className={styles.card_title}>C#</div>
-                    <div className={styles.card_info}>
-                      Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
-                    </div>
-                  </div>
-                  <div className={styles.card}>
-                    <div className={styles.card_title}>Electron.js</div>
-                    <div className={styles.card_info}>
-                      Node.js是一个事件驱动I/O服务端JavaScrip.
-                    </div>
-                  </div>
+                  {card_data_lists.map((card_data_list) => {
+                    return (
+                      <div className={styles.card}>
+                        <div className={styles.card_title}>
+                          {card_data_list.card_title}
+                        </div>
+                        <div className={styles.card_info}>
+                          {card_data_list.card_description}
+                        </div>
+                      </div>
+                    );
+                  })}
+
                   <div
                     onMouseMove={this.onMouseMoveHandle}
                     onMouseLeave={this.onMouseLeaveHandle}
