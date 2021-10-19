@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-09 14:56:21
- * @LastEditTime: 2021-10-09 15:41:54
+ * @LastEditTime: 2021-10-18 10:20:16
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\Card\index.tsx
@@ -10,7 +10,7 @@
 import React, { Component } from 'react';
 import styles from './index.less';
 
-export interface CardProps {
+interface IProps {
   type: string;
   className?: string;
   title?: string;
@@ -19,15 +19,37 @@ export interface CardProps {
   style?: React.CSSProperties;
 }
 
-export default class index extends Component {
-  constructor(props: CardProps) {
+interface IState {
+  card_status: 'move' | 'move_before';
+}
+
+export default class index extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
+    this.state = {
+      card_status: 'move_before',
+    };
   }
   render() {
+    const { card_status } = this.state;
     return (
-      <div className={styles.card}>
-        <h3>个人简介</h3>
-        {this.props}
+      <div
+        onMouseEnter={() => {
+          this.setState({
+            card_status: 'move',
+          });
+        }}
+        // onMouseLeave={() => {
+        //   this.setState({
+        //     card_status: "move_before",
+        //   });
+        // }}
+        className={`${card_status === 'move' ? styles.card_swicth : ''} ${
+          styles.card
+        }`}
+      >
+        <div className={styles.card_before}>个人简介</div>
+        <div className={styles.card_back}>个人简介</div>
       </div>
     );
   }

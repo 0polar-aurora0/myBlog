@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-10-15 17:49:25
+ * @LastEditTime: 2021-10-18 09:30:49
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -14,6 +14,7 @@ import { UserOutlined, CaretDownOutlined } from '@ant-design/icons';
 import $ from 'jquery';
 import _ from 'lodash';
 import PageContent from './pageContent/index';
+import { Card } from '@/components/index';
 
 import './index.less';
 import styles from './index.less';
@@ -166,6 +167,12 @@ export default class index extends Component {
                       </div>
                     );
                   })}
+                  <Card
+                    type="switch"
+                    card_title="node.js"
+                    card_description="Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。"
+                    card_backgroud_image=""
+                  ></Card>
 
                   <div
                     onMouseMove={this.onMouseMoveHandle}
