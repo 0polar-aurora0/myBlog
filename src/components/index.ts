@@ -12,5 +12,6 @@ import MarkDown from './MarkDown/index';
 import PreLoading from './PreLoading/index';
 import DataLoading from './DataLoading/index';
 import Card from './Card/index';
+import LoginModal from './LoginModal/index';
 
-export { Card, HeaderLists, MarkDown, PreLoading, DataLoading };
+export { Card, HeaderLists, MarkDown, PreLoading, DataLoading, LoginModal };
