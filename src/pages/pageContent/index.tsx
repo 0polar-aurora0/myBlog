@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-14 17:17:20
+ * @LastEditTime: 2021-10-20 14:05:15
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -26,13 +26,24 @@ import picture_1 from '../../assets/images/card_front.png';
 
 import styles from './index.less';
 import { history } from 'umi';
+import { get_axios } from '@/utils/axios';
 
 import { Carousel, Calendar } from 'antd';
 
 export default class index extends Component {
   state = {
+    articleList: [],
     local_menuListDetail: null,
   };
+
+  componentDidMount() {
+    get_axios('/api/article/query', {}, {}).then((res: any) => {
+      console.log(res);
+      this.setState({
+        articleList: res.data,
+      });
+    });
+  }
 
   onMouseOverHandle = (local_menuListDetail: string) => {
     console.log(local_menuListDetail);
@@ -58,7 +69,7 @@ export default class index extends Component {
   };
 
   render() {
-    const { local_menuListDetail } = this.state;
+    const { local_menuListDetail, articleList } = this.state;
     const contentStyle = {
       height: '160px',
       color: '#fff',
@@ -122,45 +133,6 @@ export default class index extends Component {
         },
       ],
     };
-
-    const articleList = [
-      {
-        id: 0,
-        title: 'js滚动效果实现',
-        date: '1999-09-12',
-        introduce: '这是一个关于js滚动效果实现的文章',
-      },
-      {
-        id: 1,
-        title: 'js滚动效果实现',
-        date: '1999-09-12',
-        introduce: '这是一个关于js滚动效果实现的文章',
-      },
-      {
-        id: 2,
-        title: 'js滚动效果实现',
-        date: '1999-09-12',
-        introduce: '这是一个关于js滚动效果实现的文章',
-      },
-      {
-        id: 3,
-        title: 'js滚动效果实现',
-        date: '1999-09-12',
-        introduce: '这是一个关于js滚动效果实现的文章',
-      },
-      {
-        id: 4,
-        title: 'js滚动效果实现',
-        date: '1999-09-12',
-        introduce: '这是一个关于js滚动效果实现的文章',
-      },
-      {
-        id: 5,
-        title: 'js滚动效果实现',
-        date: '1999-09-12',
-        introduce: '这是一个关于js滚动效果实现的文章',
-      },
-    ];
 
     return (
       <div id="pageContent" className={styles.pageContent}>

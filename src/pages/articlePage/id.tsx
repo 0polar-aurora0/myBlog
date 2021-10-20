@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-14 13:47:38
+ * @LastEditTime: 2021-10-20 14:11:58
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -28,6 +28,7 @@ export default class index extends Component {
   componentDidMount() {
     console.log(this.props.match.params);
   }
+  modify_function = () => {};
   render() {
     return (
       <div className={styles.page_content}>
@@ -47,7 +48,7 @@ export default class index extends Component {
               <UserOutlined />
               我在北极吃火锅
             </div>
-            <div className={styles.detail_piece}>
+            <div onClick={this.modify_function} className={styles.detail_piece}>
               <CodeOutlined />
               编辑
             </div>
