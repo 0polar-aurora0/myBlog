@@ -1,16 +1,16 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-21 14:07:55
- * @LastEditTime: 2021-10-25 17:59:27
+ * @LastEditTime: 2021-10-27 15:06:41
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\DragModal\index.tsx
  */
 
-import React, { ReactNode } from 'react';
-
-import DragHeader from './DragHeader/index';
+import React from 'react';
 import { Modal, ModalProps } from 'antd';
+
+import { DragHeader } from '../index';
 
 interface DragModalProps {
   drag?: boolean;
@@ -29,8 +29,7 @@ export default class DragModal extends React.Component<IProps> {
       this.props;
 
     //是否可拖拽
-    const _title =
-      title && drag ? <BuildTitle visible={visible} title={title} /> : title;
+    const _title = title && drag ? <DragHeader title={title} /> : title;
     // TODO 合并解决React.cloneElement问题,简化组件写法
     return (
       <Modal

@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-25 15:19:09
+ * @LastEditTime: 2021-10-27 15:03:13
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -83,7 +83,10 @@ export default class index extends Component<any, IState> {
         <div className={styles.article_content}>
           <MarkDown mackdown_content={mackdown_content} />
         </div>
-        <LoginModal visible={login_modal_ishow} />
+        <LoginModal
+          visible={login_modal_ishow}
+          close={this.login_modal_state_change}
+        />
       </div>
     );
   }

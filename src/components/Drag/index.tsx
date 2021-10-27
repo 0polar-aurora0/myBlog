@@ -1,29 +1,29 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-25 13:49:24
- * @LastEditTime: 2021-10-25 17:20:32
+ * @LastEditTime: 2021-10-27 15:05:43
  * @LastEditors: fuzhenghao
- * @Description:
- * @FilePath: \myBlog_frontEnd\src\components\DragModal\DragHeader\index.tsx
+ * @Description: 此组件为拖拽组件，
+ * @FilePath: \myBlog_frontEnd\src\components\Drag\index.tsx
  */
 
-import React from 'react';
-
-interface updateTransform_Func {
-  (source: string, subString: string): boolean;
-}
+import React, { ReactElement } from 'react';
+import { updateTransform } from '../DragHeader';
 
 interface Iprops {
-  updateTransform: Function;
+  updateTransform: updateTransform;
+  children: ReactElement;
 }
 
-export default class DragHeader extends React.Component<Iprops> {
-  static defaultProps = {
-    //默认是移动children dom,覆盖该方法，可以把tranform行为同步给外部
-    updateTransform: (transformStr, tx, ty, tdom) => {
-      tdom.style.transform = transformStr;
-    },
-  };
+export default class Drag extends React.Component<Iprops> {
+  public tdom: any;
+
+  // static defaultProps = {
+  //   //默认是移动children dom,覆盖该方法，可以把tranform行为同步给外部
+  //   updateTransform: (transformStr, tx, ty, tdom) => {
+  //     tdom.style.transform = transformStr;
+  //   },
+  // };
 
   position = {
     startX: 0,
@@ -45,10 +45,11 @@ export default class DragHeader extends React.Component<Iprops> {
   };
 
   docMove = (event: MouseEvent) => {
+    let { updateTransform } = this.props;
     const tx = event.pageX - this.position.startX;
     const ty = event.pageY - this.position.startY;
     const transformStr = `translate(${tx}px,${ty}px)`;
-    this.props.updateTransform(transformStr, tx, ty, this.tdom);
+    updateTransform(transformStr);
     this.position.dx = tx;
     this.position.dy = ty;
   };
@@ -68,7 +69,6 @@ export default class DragHeader extends React.Component<Iprops> {
     document.removeEventListener('mouseup', this.docMouseUp);
     document.removeEventListener('mousemove', this.docMove);
   }
-
   render() {
     const { children } = this.props;
     const newStyle = {
@@ -77,7 +77,7 @@ export default class DragHeader extends React.Component<Iprops> {
       userSelect: 'none',
     };
     return React.cloneElement(React.Children.only(children), {
-      ref: (tdom) => {
+      ref: (tdom: any) => {
         return (this.tdom = tdom);
       },
       style: newStyle,
