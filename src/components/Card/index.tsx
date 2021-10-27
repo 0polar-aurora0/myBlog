@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-09 14:56:21
- * @LastEditTime: 2021-10-18 10:20:16
+ * @LastEditTime: 2021-10-27 17:05:22
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\Card\index.tsx
@@ -39,11 +39,11 @@ export default class index extends Component<IProps, IState> {
             card_status: 'move',
           });
         }}
-        // onMouseLeave={() => {
-        //   this.setState({
-        //     card_status: "move_before",
-        //   });
-        // }}
+        onMouseLeave={() => {
+          this.setState({
+            card_status: 'move_before',
+          });
+        }}
         className={`${card_status === 'move' ? styles.card_swicth : ''} ${
           styles.card
         }`}
