@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-27 15:03:13
+ * @LastEditTime: 2021-10-29 15:38:57
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -21,7 +21,7 @@ import {
   EyeOutlined,
 } from '@ant-design/icons';
 
-let mackdown_content = require('@/assets/mackdown/mackdown_test.md').default;
+let mackdown_content = require('@/assets/mackdown/lodash源码解读.md').default;
 console.log(mackdown_content);
 
 interface IState {
