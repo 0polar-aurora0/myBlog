@@ -1,9 +1,9 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-29 15:38:57
+ * @LastEditTime: 2021-11-01 18:02:34
  * @LastEditors: fuzhenghao
- * @Description:
+ * @Description: 文章界面
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
  *
  */
@@ -20,21 +20,19 @@ import {
   LikeOutlined,
   EyeOutlined,
 } from '@ant-design/icons';
-
-let mackdown_content = require('@/assets/mackdown/lodash源码解读.md').default;
-console.log(mackdown_content);
-
 interface IState {
   login_modal_ishow: boolean;
+  mackdown_content: any;
 }
 
 export default class index extends Component<any, IState> {
   state: IState = {
     login_modal_ishow: false,
+    mackdown_content: null,
   };
 
   componentDidMount() {
-    console.log(this.props.match.params);
+    console.log(this.props.location);
   }
 
   login_modal_state_change = () => {
@@ -51,20 +49,23 @@ export default class index extends Component<any, IState> {
   };
 
   render() {
-    const { login_modal_ishow } = this.state;
+    const { login_modal_ishow, mackdown_content } = this.state;
+    let {
+      location: { query },
+    } = this.props;
     return (
       <div className={styles.page_content}>
         <div className={styles.article_title}>
-          <h2>文章标题</h2>
+          <h2>{query.title}</h2>
           <div className={styles.title_detail}>
             <div className={styles.detail_piece}>
               <FieldTimeOutlined />
-              1999-09-12
+              {query.date}
             </div>
 
             <div className={styles.detail_piece}>
               <EyeOutlined />
-              访问次数
+              共访问{query.visits}次
             </div>
             <div className={styles.detail_piece}>
               <UserOutlined />

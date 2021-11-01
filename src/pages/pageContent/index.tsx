@@ -1,13 +1,13 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-20 14:05:15
+ * @LastEditTime: 2021-11-01 16:01:23
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
  *
  */
-import React, { Component } from 'react';
+import React, { Component, History } from 'react';
 import {
   GithubOutlined,
   ZhihuOutlined,
@@ -30,7 +30,19 @@ import { get_axios } from '@/utils/axios';
 
 import { Carousel, Calendar } from 'antd';
 
-export default class index extends Component {
+interface IProps {}
+interface IState {
+  articleList: Array<article>;
+  local_menuListDetail: any;
+}
+
+interface article {
+  date: any;
+  introduce: any;
+  title: any;
+  id: any;
+}
+export default class index extends Component<IProps, IState> {
   state = {
     articleList: [],
     local_menuListDetail: null,
@@ -59,12 +71,10 @@ export default class index extends Component {
     });
   };
 
-  check_article_detail = (article: { id: any }) => {
+  check_article_detail = (article: article) => {
     history.push({
       pathname: `/articlePage/:${article.id}`,
-      // query: {
-      //   article: article.id,
-      // },
+      query: article as History.HistoryLocationState,
     });
   };
 
@@ -147,7 +157,7 @@ export default class index extends Component {
                 <img src={picture_1} alt="" />
                 <img src={picture_1} alt="" />
               </Carousel>
-              {articleList.map((article) => {
+              {articleList.map((article: article) => {
                 return (
                   <div
                     onClick={this.check_article_detail.bind(this, article)}
