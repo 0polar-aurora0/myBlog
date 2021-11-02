@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-11-01 18:02:34
+ * @LastEditTime: 2021-11-02 11:35:57
  * @LastEditors: fuzhenghao
  * @Description: 文章界面
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -10,6 +10,7 @@
 import React, { Component } from 'react';
 import styles from './id.less';
 // import ReactMarkdown from "react-markdown";
+import { get_axios } from '@/utils/axios';
 
 import { MarkDown, LoginModal } from '@/components/index';
 
@@ -32,7 +33,18 @@ export default class index extends Component<any, IState> {
   };
 
   componentDidMount() {
-    console.log(this.props.location);
+    let {
+      location: { query },
+    } = this.props;
+    console.log();
+    get_axios(`/api/public/markdown/${query.id}.md`, {}, {}).then(
+      (res: any) => {
+        console.log(res);
+        this.setState({
+          mackdown_content: res,
+        });
+      },
+    );
   }
 
   login_modal_state_change = () => {

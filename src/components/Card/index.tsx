@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-09 14:56:21
- * @LastEditTime: 2021-10-27 17:05:22
+ * @LastEditTime: 2021-11-02 15:24:42
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\Card\index.tsx
@@ -9,12 +9,15 @@
  */
 import React, { Component } from 'react';
 import styles from './index.less';
+import { Property } from 'cssType';
 
 interface IProps {
   type: string;
   className?: string;
   title?: string;
+  card_description: string;
   onClick?: React.MouseEventHandler<any>;
+  card_backgroud_image: Property.BackgroundImage;
   spin?: boolean;
   style?: React.CSSProperties;
 }
@@ -32,6 +35,7 @@ export default class index extends Component<IProps, IState> {
   }
   render() {
     const { card_status } = this.state;
+    const { card_backgroud_image, card_description } = this.props;
     return (
       <div
         onMouseEnter={() => {
@@ -48,8 +52,13 @@ export default class index extends Component<IProps, IState> {
           styles.card
         }`}
       >
-        <div className={styles.card_before}>个人简介</div>
-        <div className={styles.card_back}>个人简介</div>
+        <div
+          style={{ backgroundImage: card_backgroud_image }}
+          className={styles.card_before}
+        >
+          {card_description}
+        </div>
+        <div className={styles.card_back}></div>
       </div>
     );
   }

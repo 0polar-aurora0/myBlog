@@ -1,13 +1,13 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-11-01 16:01:23
+ * @LastEditTime: 2021-11-02 13:54:36
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
  *
  */
-import React, { Component, History } from 'react';
+import React, { Component } from 'react';
 import {
   GithubOutlined,
   ZhihuOutlined,
