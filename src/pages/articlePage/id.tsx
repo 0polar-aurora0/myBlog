@@ -1,15 +1,20 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2022-06-19 23:51:32
+<<<<<<< HEAD
+ * @LastEditTime: 2022-06-29 18:57:18
+=======
+ * @LastEditTime: 2021-11-02 11:35:57
+>>>>>>> ee64217a76b62715196a5cd8617e7e55e0764887
  * @LastEditors: fuzhenghao
- * @Description:
+ * @Description: 文章界面
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
  *
  */
 import React, { Component } from 'react';
 import styles from './id.less';
 // import ReactMarkdown from "react-markdown";
+import { get_axios } from '@/utils/axios';
 
 import { MarkDown, LoginModal } from '@/components/index';
 
@@ -80,12 +85,12 @@ export default class index extends Component<any, IState> {
           <div className={styles.title_detail}>
             <div className={styles.detail_piece}>
               <FieldTimeOutlined />
-              1999-09-12
+              {query.date}
             </div>
 
             <div className={styles.detail_piece}>
               <EyeOutlined />
-              访问次数
+              共访问{query.visits}次
             </div>
             <div className={styles.detail_piece}>
               <UserOutlined />

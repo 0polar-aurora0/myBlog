@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2022-06-19 23:39:34
+ * @LastEditTime: 2022-06-29 18:57:43
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -14,6 +14,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import PageContent from './pageContent/index';
 import { Card } from '@/components/index';
+import { get_axios } from '@/utils/axios';
 
 import './index.less';
 import styles from './index.less';
@@ -22,9 +23,23 @@ const { Link } = Anchor;
 
 const perspective_origin_center_X = 160,
   perspective_origin_center_Y = 80;
-export default class index extends Component {
-  state = {
+
+interface IState {
+  localPage: number;
+  card_data_lists: Array<{
+    id: number;
+    title: string;
+    description: string;
+    type: string;
+    card_backgroud_image: any;
+  }>;
+  perspective_origin_X: number;
+  perspective_origin_Y: number;
+}
+export default class index extends Component<{}, IState> {
+  state: IState = {
     localPage: 0,
+    card_data_lists: [],
     perspective_origin_X: perspective_origin_center_X,
     perspective_origin_Y: perspective_origin_center_Y,
   };
@@ -51,6 +66,14 @@ export default class index extends Component {
     // $(window).on("", _.throttle(updatePosition, 1000));
   }
 
+  page_axios = () => {
+    get_axios('api/indexpage_cardlist/query', {}, {}).then((res: any) => {
+      this.setState({
+        card_data_lists: res.data,
+      });
+    });
+  };
+
   handleClick = () => {
     this.setState({
       localPage: 1,
@@ -76,34 +99,7 @@ export default class index extends Component {
   };
 
   render() {
-    let { localPage } = this.state;
-
-    let card_data_lists = [
-      {
-        card_title: 'Node.js',
-        card_description:
-          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
-        card_backgroud_image: '',
-      },
-      {
-        card_title: 'React.js',
-        card_description:
-          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
-        card_backgroud_image: '',
-      },
-      {
-        card_title: 'C#',
-        card_description:
-          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
-        card_backgroud_image: '',
-      },
-      {
-        card_title: 'Electron.js',
-        card_description:
-          'Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。',
-        card_backgroud_image: '',
-      },
-    ];
+    let { localPage, card_data_lists } = this.state;
 
     return (
       <div className={styles.index_page}>
@@ -126,22 +122,17 @@ export default class index extends Component {
                 <div className={styles.introduction_cardLists}>
                   {card_data_lists.map((card_data_list) => {
                     return (
-                      <div className={styles.card}>
-                        <div className={styles.card_title}>
-                          {card_data_list.card_title}
-                        </div>
-                        <div className={styles.card_info}>
-                          {card_data_list.card_description}
-                        </div>
-                      </div>
+                      <Card
+                        key={card_data_list.id}
+                        type={card_data_list.type}
+                        title={card_data_list.title}
+                        card_description={card_data_list.description}
+                        card_backgroud_image={
+                          card_data_list.card_backgroud_image.data
+                        }
+                      ></Card>
                     );
                   })}
-                  <Card
-                    type="switch"
-                    card_title="node.js"
-                    card_description="Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。"
-                    card_backgroud_image=""
-                  ></Card>
 
                   {/* <div
                     onMouseMove={this.onMouseMoveHandle}

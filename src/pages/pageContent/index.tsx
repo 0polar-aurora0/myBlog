@@ -1,7 +1,11 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2022-06-21 12:45:37
+<<<<<<< HEAD
+ * @LastEditTime: 2022-06-29 18:55:24
+=======
+ * @LastEditTime: 2021-11-02 13:54:36
+>>>>>>> ee64217a76b62715196a5cd8617e7e55e0764887
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -35,7 +39,19 @@ import { get_axios } from '@/utils/axios';
 import { Carousel, Calendar, BackTop, Button, Affix } from 'antd';
 import { Article } from './interface';
 
-export default class index extends Component {
+interface IProps {}
+interface IState {
+  articleList: Array<article>;
+  local_menuListDetail: any;
+}
+
+interface article {
+  date: any;
+  introduce: any;
+  title: any;
+  id: any;
+}
+export default class index extends Component<IProps, IState> {
   state = {
     articleList: [],
     local_menuListDetail: null,
