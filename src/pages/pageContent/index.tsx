@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-29 09:29:29
- * @LastEditTime: 2021-10-20 14:05:15
+ * @LastEditTime: 2022-06-21 12:45:37
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\pageContent\index.tsx
@@ -20,15 +20,20 @@ import {
   ReadOutlined,
   BookOutlined,
   TagOutlined,
+  UserOutlined,
+  AlipayCircleOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
-import { HeaderLists } from '@/components/index';
+import { Avatar } from 'antd';
+import { ArticleCard, HeaderLists } from '@/components/index';
 import picture_1 from '../../assets/images/card_front.png';
 
 import styles from './index.less';
 import { history } from 'umi';
 import { get_axios } from '@/utils/axios';
 
-import { Carousel, Calendar } from 'antd';
+import { Carousel, Calendar, BackTop, Button, Affix } from 'antd';
+import { Article } from './interface';
 
 export default class index extends Component {
   state = {
@@ -38,7 +43,6 @@ export default class index extends Component {
 
   componentDidMount() {
     get_axios('/api/article/query', {}, {}).then((res: any) => {
-      console.log(res);
       this.setState({
         articleList: res.data,
       });
@@ -46,8 +50,6 @@ export default class index extends Component {
   }
 
   onMouseOverHandle = (local_menuListDetail: string) => {
-    console.log(local_menuListDetail);
-
     this.setState({
       local_menuListDetail,
     });
@@ -59,156 +61,104 @@ export default class index extends Component {
     });
   };
 
-  check_article_detail = (article: { id: any }) => {
-    history.push({
-      pathname: `/articlePage/:${article.id}`,
-      // query: {
-      //   article: article.id,
-      // },
-    });
-  };
-
   render() {
     const { local_menuListDetail, articleList } = this.state;
-    const contentStyle = {
-      height: '160px',
-      color: '#fff',
-      lineHeight: '160px',
-      textAlign: 'center',
-      background: '#364d79',
-    };
-    function onChange(a, b, c) {
-      console.log(a, b, c);
-    }
-    function onPanelChange(value, mode) {
-      console.log(value, mode);
-    }
-    let headerLists_config = {
-      headerLeftLists: [
-        {
-          color: 'pink',
-          title: 'react',
-          icon: <GithubOutlined style={{ fontSize: '16px', color: 'pink' }} />,
-          childrenList: [],
-        },
-        {
-          color: 'green',
-          title: 'vue',
-          icon: <GithubOutlined style={{ fontSize: '16px', color: 'green' }} />,
-          childrenList: [],
-        },
-        {
-          color: 'green',
-          title: 'angular',
-          icon: <GithubOutlined style={{ fontSize: '16px', color: 'green' }} />,
-          childrenList: [],
-        },
-      ],
-      headerRightLists: [
-        {
-          link: 'https://github.com/0polar-aurora0',
-          title: 'Github',
-          icon: <GithubOutlined style={{ fontSize: '16px', color: 'black' }} />,
-        },
-        {
-          color: 'pink',
-          link: 'https://github.com/0polar-aurora0',
-          title: 'bilibili',
-          icon: <YoutubeOutlined style={{ fontSize: '16px', color: 'pink' }} />,
-        },
-        {
-          title: '掘金',
-          color: 'blue',
-          icon: <SketchOutlined style={{ fontSize: '16px', color: 'blue' }} />,
-        },
-        {
-          title: '微信',
-          color: 'green',
-          icon: <WechatOutlined style={{ fontSize: '16px', color: 'green' }} />,
-        },
-        {
-          title: '知乎',
-          color: 'blue',
-          icon: <ZhihuOutlined style={{ fontSize: '16px', color: 'blue' }} />,
-        },
-      ],
-    };
+
+    function onPanelChange(value: any, mode: any) {}
 
     return (
       <div id="pageContent" className={styles.pageContent}>
-        <HeaderLists {...headerLists_config} />
+        <Affix>
+          <HeaderLists />
+        </Affix>
 
         <div className={styles.pageContent_content}>
           <div className={styles.content_conatiner}>
-            <div className={styles.content_left}>
-              <Carousel afterChange={onChange}>
+            {/* <div className={styles.content_left}>123</div> */}
+            <div className={styles.content_center}>
+              {/* 轮播图 */}
+              {/* <Carousel >
                 <img src={picture_1} alt="" />
                 <img src={picture_1} alt="" />
                 <img src={picture_1} alt="" />
                 <img src={picture_1} alt="" />
-              </Carousel>
-              {articleList.map((article) => {
-                return (
-                  <div
-                    onClick={this.check_article_detail.bind(this, article)}
-                    className={styles.article}
-                  >
-                    <h3>{article.date}</h3>
-                    <div className={styles.article_title}>
-                      <div className={styles.article_title_icon}></div>
-                      <h3>{article.title}</h3>
-                    </div>
-                    <div className={styles.article_introduce}>
-                      {article.introduce}
-                    </div>
-                  </div>
-                );
+              </Carousel> */}
+              {articleList.map((article: Article) => {
+                return <ArticleCard {...article}></ArticleCard>;
               })}
             </div>
             <div className={styles.content_right}>
-              <div className={styles.card}>
-                <h3>
-                  <RobotOutlined />
-                  个人简介
-                </h3>
-                <div className={styles.introduce_area_lists}>
-                  <div className={styles.introduce_area_list}>
-                    <p>昵称</p>
-                    <p>123456</p>
-                  </div>
-                  <div className={styles.introduce_area_list}>
-                    <p>爱好</p>
-                    <p>玩</p>
-                  </div>
-                  <div className={styles.introduce_area_list}>
-                    <p>兴趣</p>
-                    <p>吃</p>
-                  </div>
-                  <div className={styles.introduce_area_list}>
-                    <p>擅长</p>
-                    <p>睡</p>
-                  </div>
+              <div className={styles.card_aboutme}>
+                <Avatar
+                  className={styles.aboutme_avatar}
+                  size={64}
+                  icon={<UserOutlined />}
+                />
+                <div className={styles.aboutme_name}>我在北极吃火锅</div>
+                <div className={styles.aboutme_introduce}>
+                  岁月静好，日臻日善
                 </div>
-                <div className={styles.introduce_area_more}>
-                  了解更多关于博主
+
+                <Button className={styles.aboutme_button}>加入书签</Button>
+                <div className={styles.aboutme_link}>
+                  <GithubOutlined style={{ color: 'black' }} />
+                  <WechatOutlined style={{ color: 'green' }} />
+                  <ZhihuOutlined style={{ color: 'rgb(4,103,246)' }} />
+                  <AlipayCircleOutlined style={{ color: 'rgb(21,120,255)' }} />
+                  <MailOutlined style={{ color: 'rgb(59,201,243)' }} />
                 </div>
+                <Button className={styles.aboutme_button}>了解更多</Button>
               </div>
 
-              <div className={styles.card}>
-                <h3>
-                  <CalendarOutlined />
-                  日历
-                </h3>
-                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-              </div>
-              <div className={styles.card}>
+              <Carousel
+                className={styles.card_carousel}
+                autoplay={true}
+                dotPosition={'right'}
+              >
+                <div>
+                  <div className={styles.carousel_1}>
+                    <div className={styles.carousel_content}>
+                      <p className={styles.title}>日记</p>
+                      <p className={styles.content}>
+                        做一个热爱生活的人，把生活记录下来。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className={styles.carousel_2}>
+                    <div className={styles.carousel_content}>
+                      <p className={styles.title}>旅行</p>
+                      <p className={styles.content}>
+                        我认为旅行是从大自然学习的最佳方式。走遍世界，这是我最大的梦想。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className={styles.carousel_3}>
+                    <div className={styles.carousel_content}>
+                      <p className={styles.title}>好好打代码</p>
+                      <p className={styles.content}>每天都要学习！</p>
+                    </div>
+                  </div>
+                </div>
+              </Carousel>
+
+              <Calendar
+                className={styles.card_calendar}
+                fullscreen={false}
+                onPanelChange={onPanelChange}
+              />
+
+              {/* <div className={styles.card}>
                 <h3>
                   <BookOutlined />
                   随笔
                 </h3>
-              </div>
+              </div> */}
 
-              <div className={styles.card}>
+              {/* <div className={styles.card}>
                 <h3>
                   <TagsOutlined />
                   我的标签
@@ -259,15 +209,9 @@ export default class index extends Component {
                     吃饭
                   </div>
                 </div>
-              </div>
-
-              <div className={styles.card}>
-                <h3>
-                  <ReadOutlined />
-                  我的日记
-                </h3>
-              </div>
+              </div> */}
             </div>
+            <BackTop />
           </div>
         </div>
       </div>
