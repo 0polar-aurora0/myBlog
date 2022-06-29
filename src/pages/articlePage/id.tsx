@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
- * @LastEditTime: 2021-10-29 15:38:57
+ * @LastEditTime: 2022-06-19 23:51:32
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\articlePage\id.tsx
@@ -20,26 +20,35 @@ import {
   LikeOutlined,
   EyeOutlined,
 } from '@ant-design/icons';
-
-let mackdown_content = require('@/assets/mackdown/lodash源码解读.md').default;
-console.log(mackdown_content);
+import { fileUpload } from '@/commonService';
+import { history } from 'umi';
 
 interface IState {
   login_modal_ishow: boolean;
+  mackdown_content: any;
+  mackdown_info: any;
 }
 
 export default class index extends Component<any, IState> {
   state: IState = {
     login_modal_ishow: false,
+    mackdown_content: null,
+    mackdown_info: { fileName: '文章标题' },
   };
 
   componentDidMount() {
-    console.log(this.props.match.params);
+    console.log(this.props.match);
+    console.log({ history });
+    fileUpload(null, this.props.match.params, (res) => {
+      this.setState({
+        mackdown_content: res.file,
+        mackdown_info: res,
+      });
+    });
   }
 
   login_modal_state_change = () => {
     const { login_modal_ishow } = this.state;
-    console.log('点击编辑按钮');
 
     this.setState({
       login_modal_ishow: !login_modal_ishow,
@@ -51,11 +60,23 @@ export default class index extends Component<any, IState> {
   };
 
   render() {
-    const { login_modal_ishow } = this.state;
+    const {
+      login_modal_ishow,
+      mackdown_content,
+      mackdown_info: { fileName },
+    } = this.state;
     return (
       <div className={styles.page_content}>
         <div className={styles.article_title}>
-          <h2>文章标题</h2>
+          <h2>{history.location.state.title}</h2>
+          <div className={styles.article_series}>
+            {/* {this.props.match.params.articleSeries.map(
+              (item: { title: any }) => {
+                return <p className={styles.series}>{item.title}</p>;
+              },
+            )} */}
+            <p className={styles.text1}>专栏收录以下内容</p>
+          </div>
           <div className={styles.title_detail}>
             <div className={styles.detail_piece}>
               <FieldTimeOutlined />

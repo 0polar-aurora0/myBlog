@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-10-28 15:22:08
+ * @LastEditTime: 2022-06-17 15:35:29
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\.umirc.ts
@@ -22,22 +22,23 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  inlineLimit: 100,
   routes: routes,
   fastRefresh: {},
   dynamicImport: { loading: '@/components/PreLoading/index' },
   proxy: {
     '/login': {
-      target: 'http://192.168.20.115:7001',
+      target: 'http://localhost:7003',
       secure: false,
       changeOrigin: true,
     },
     '/logout': {
-      target: 'http://192.168.20.115:7001',
+      target: 'http://localhost:7003',
       secure: false,
       changeOrigin: true,
     },
     '/api/*': {
-      target: 'http://192.168.20.115:7001',
+      target: 'http://localhost:7003',
       secure: false, // 接受 运行在 https 上的服务
       changeOrigin: true,
       pathRewrite: {
@@ -45,7 +46,7 @@ export default defineConfig({
       },
     },
     '/sws/*': {
-      target: 'http://192.168.20.115:7001',
+      target: 'http://localhost:7003',
       secure: false, // 接受 运行在 https 上的服务
       changeOrigin: true,
       pathRewrite: { '^/sws': '' },

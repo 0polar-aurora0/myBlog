@@ -14,9 +14,7 @@ interface IProps {
 //   useMessage(): [MessageInstance, React.ReactElement];
 // }
 export default class index extends Component<IProps> {
-  login = () => {
-    console.log('登录');
-  };
+  login = () => {};
 
   render() {
     const { visible, close } = this.props;

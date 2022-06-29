@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2021-09-26 11:36:59
- * @LastEditTime: 2021-10-20 14:04:58
+ * @LastEditTime: 2022-06-19 23:39:34
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\pages\index.tsx
@@ -30,52 +30,28 @@ export default class index extends Component {
   };
 
   componentDidMount() {
-    console.log(123);
+    let preLocation = $(document).scrollTop() || 0;
+    let nowLocation = 0;
 
-    // $(window).scroll(function () {
-    // //已经滚动到上面的页面高度
-    // var scrollTop = $(".page_1").scrollTop();
-    // //页面高度
-    // var scrollHeight = $(document).height();
-    // //浏览器窗口高度
-    // var windowHeight = $(window).height();
-    // console.log(
-    //   "scrollTop, windowHeight, scrollHeight",
-    //   scrollTop,
-    //   windowHeight,
-    //   scrollHeight
-    // );
-    // //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-    // if (scrollTop + windowHeight === scrollHeight) {
-    // }
-
-    //获取屏幕滚动
-
-    // let window_scrollTop = $(window).scrollTop();
-    // });
-    var p = 0,
-      t = 0;
     const updatePosition = () => {
-      p = $(window).scrollTop() || 0;
-      console.log(p);
+      let speed = 400;
+      nowLocation = $(document).scrollTop() || 0;
+      let page_1_height = Math.floor($('#page_1').height() as number);
+      // // let content_height = $('.pageContent').height() as number;
+      // //在第一页内
 
-      if (t <= p) {
-        console.log('下滚');
-        //此时为下滚状态
-      } else {
-        console.log('上滚');
+      //向下
+      if (nowLocation > preLocation && nowLocation < page_1_height) {
+        $('html').animate({ scrollTop: page_1_height }, speed, 'swing');
       }
-      t = p;
+      preLocation = nowLocation;
     };
     //节流控制监听滚动
-    $(window).on('scroll', _.throttle(updatePosition, 1000));
+    $(window).on('scroll', _.throttle(updatePosition, 200));
     // $(window).on("", _.throttle(updatePosition, 1000));
   }
 
   handleClick = () => {
-    console.log(123);
-
-    // let { localPage } = this.state;
     this.setState({
       localPage: 1,
     });
@@ -83,7 +59,7 @@ export default class index extends Component {
 
   onMouseMoveHandle = () => {
     const event = window.event;
-    // console.log(event.layerX);
+
     event.layerX > 0 &&
       event.layerY > 0 &&
       this.setState({
@@ -131,7 +107,7 @@ export default class index extends Component {
 
     return (
       <div className={styles.index_page}>
-        <div className={styles.page_1}>
+        <div id="page_1" className={styles.page_1}>
           <div
             style={{ left: `${-localPage * 100}vw` }}
             className={`${styles.page_1_List} ${
@@ -167,7 +143,7 @@ export default class index extends Component {
                     card_backgroud_image=""
                   ></Card>
 
-                  <div
+                  {/* <div
                     onMouseMove={this.onMouseMoveHandle}
                     onMouseLeave={this.onMouseLeaveHandle}
                     style={{
@@ -195,7 +171,7 @@ export default class index extends Component {
                     <div
                       className={`${styles.box_piece6_bottom} ${styles.box_piece}`}
                     ></div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className={styles.button_to_blogContent}>

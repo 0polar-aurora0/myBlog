@@ -1,0 +1,52 @@
+.article {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  .articleSeries,
+  .article_head {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .article_head {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 2px solid rgb(218, 201, 182);
+
+    .article_title {
+      width: 50%;
+      font-size: 24px;
+      line-height: 2.4;
+      display: flex;
+      flex-direction: row;
+      font-family: 'Gill Sans', sans-serif;
+    }
+
+    .article_time {
+      width: 50%;
+      text-align: end;
+      color: rgb(185, 185, 185);
+    }
+  }
+
+  .articleSeries {
+    p {
+      float: left;
+    }
+  }
+
+  .article_introduce {
+    font-size: 15px;
+  }
+
+  .article_bottom {
+  }
+}

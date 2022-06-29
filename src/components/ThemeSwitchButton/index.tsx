@@ -3,7 +3,7 @@ import { Button, ConfigProvider } from 'antd';
 /*
  * @Author: fuzhenghao
  * @Date: 2022-06-29 14:29:35
- * @LastEditTime: 2022-06-29 18:35:29
+ * @LastEditTime: 2022-06-29 18:52:04
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\ThemeSwitchButton\index.tsx
@@ -18,7 +18,7 @@ export default () => {
       infoColor: '#1890ff',
     };
     let newTheme: Partial<typeof theme> = { ...theme };
-    ConfigProvider.config(newTheme);
+    // ConfigProvider.config(newTheme);
   };
 
   return (

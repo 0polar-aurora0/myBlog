@@ -10,113 +10,178 @@
   .pageContent_content {
     margin: 0 auto;
     width: 100%;
+
     .content_conatiner {
       display: flex;
+      // max-width: 1650px;
       max-width: 1200px;
       flex-direction: row;
       justify-content: center;
       height: auto;
       margin: 0 auto;
-      .content_left {
+
+      // .content_left {
+      //   display: flex;
+      //   flex-direction: column;
+      //   margin: 25px;
+      //   width: 350px;
+      //   background-color: red;
+      // }
+
+      .content_center {
         // background-color: brown;
         margin: 25px;
-        width: calc(100% - 450px);
+        // width: calc(100% - 900px);
+        width: calc(100% - 400px);
+
         :global {
           .ant-carousel {
             width: 100%;
             margin-bottom: 20px;
+
             .slick-list {
               max-height: 400px;
             }
           }
         }
-        .article {
-          display: flex;
-          flex-direction: column;
-          background-color: white;
-          padding: 20px;
-          border-radius: 5px;
-          margin-bottom: 10px;
-          cursor: pointer;
-          .article_title {
-            // height: 40px;
-            line-height: 2.4;
-            display: flex;
-            flex-direction: row;
-            .article_title_icon {
-              height: 100%;
-              width: 1px;
-              border-left: 5px solid blue;
-              background-color: blue;
-              // border: 5px;
-              margin-right: 1px;
-            }
-          }
-          .article_title > h3 {
-            border-bottom: 1px solid rgb(244, 244, 244);
-            line-height: 2.4;
-            margin: 0;
-            font-weight: 700;
-          }
-        }
       }
+
       .content_right {
         // background-color: chocolate;
         display: flex;
         flex-direction: column;
         margin: 25px;
-        width: 350px;
-        .card {
+        width: 300px;
+
+        .card_aboutme,
+        .card_carousel,
+        .card_calendar {
+          border-radius: 5px;
+          margin-bottom: 15px;
+          background-color: white;
+        }
+
+        .card_aboutme {
+          padding: 20px;
           display: flex;
           flex-direction: column;
-          background-color: white;
-          padding: 20px;
-          border-radius: 5px;
-          margin-bottom: 10px;
-          h3 {
-            border-bottom: 1px solid rgb(244, 244, 244);
-            line-height: 2.4;
-            margin: 0;
-            font-weight: 700;
+          justify-content: flex-start;
+          align-items: center;
+
+          .aboutme_avatar,
+          .aboutme_name,
+          .aboutme_button,
+          .aboutme_introduce,
+          .aboutme_link {
+            margin: 5px 0;
+            width: 100%;
           }
-          .introduce_area_lists {
-            margin-top: 10px;
-            display: flex;
-            flex-direction: column;
-            .introduce_area_list {
-              display: flex;
-              flex-direction: row;
-              margin: 10px 0;
-              p {
-                margin: 0;
-                font-size: 16px;
-              }
-              p:nth-child(1) {
-                min-width: 80px;
-              }
-              p:nth-child(2) {
-                margin-left: 16px;
-              }
-            }
-          }
-          .introduce_area_more {
-            cursor: pointer;
-            text-align: center;
+
+          .aboutme_name {
             font-size: 20px;
+            font-weight: 800;
+            text-align: center;
           }
-          .myTag_area_lists {
-            margin-top: 10px;
+
+          .aboutme_introduce {
+            font-size: 20px;
+            text-align: center;
+          }
+
+          .aboutme_button {
+            width: 100%;
+            background-color: rgb(51, 51, 51);
+            color: white;
+          }
+
+          .aboutme_link {
+            font-size: 25px;
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
-            .myTag_area_list {
-              margin-right: 20px;
-              margin-bottom: 20px;
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
+            align-items: center;
+            justify-content: space-evenly;
+          }
+        }
+
+        .card_carousel {
+          overflow: hidden;
+
+          .carousel_1,
+          .carousel_2,
+          .carousel_3 {
+            height: 400px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+
+            .carousel_content {
+              position: absolute;
+              bottom: 0px;
+              padding: 50px;
+              color: white;
+
+              .title {
+                font-size: 30px;
+                font-weight: 600;
+                margin: 0;
+              }
+
+              .content {
+                font-size: 17px;
+              }
             }
+          }
+
+          .carousel_1 {
+            background-image: url(~@/assets/images/aboutme_carousel/carousel1.jpg);
+          }
+
+          .carousel_2 {
+            background-image: url(~@/assets/images/aboutme_carousel/carousel2.jpg);
+          }
+
+          .carousel_3 {
+            background-image: url(~@/assets/images/aboutme_carousel/carousel3.jpg);
+          }
+
+          .contentStyle {
+            height: 300px;
+            color: #fff;
+            line-height: 160px;
+            text-align: center;
+            background-color: #364d79;
+            margin: 0;
+          }
+        }
+
+        .card_calendar {
+          :global {
+            .ant-picker-body {
+              padding: 10px;
+            }
+          }
+        }
+
+        .introduce_area_more {
+          cursor: pointer;
+          text-align: center;
+          font-size: 20px;
+        }
+
+        .myTag_area_lists {
+          margin-top: 10px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          .myTag_area_list {
+            margin-right: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
           }
         }
       }
@@ -130,6 +195,7 @@
     flex-direction: column !important;
     justify-content: center;
     align-items: center;
+
     .content_left,
     .content_right {
       width: 100% !important;
