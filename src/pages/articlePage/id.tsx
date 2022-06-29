@@ -2,7 +2,7 @@
  * @Author: fuzhenghao
  * @Date: 2021-10-11 09:15:30
 <<<<<<< HEAD
- * @LastEditTime: 2022-06-29 18:57:18
+ * @LastEditTime: 2022-06-29 20:18:51
 =======
  * @LastEditTime: 2021-11-02 11:35:57
 >>>>>>> ee64217a76b62715196a5cd8617e7e55e0764887
@@ -65,23 +65,14 @@ export default class index extends Component<any, IState> {
   };
 
   render() {
-    const {
-      login_modal_ishow,
-      mackdown_content,
-      mackdown_info: { fileName },
-    } = this.state;
+    const { login_modal_ishow, mackdown_content } = this.state;
+    let {
+      location: { query },
+    } = this.props;
     return (
       <div className={styles.page_content}>
         <div className={styles.article_title}>
-          <h2>{history.location.state.title}</h2>
-          <div className={styles.article_series}>
-            {/* {this.props.match.params.articleSeries.map(
-              (item: { title: any }) => {
-                return <p className={styles.series}>{item.title}</p>;
-              },
-            )} */}
-            <p className={styles.text1}>专栏收录以下内容</p>
-          </div>
+          <h2>{query.title}</h2>
           <div className={styles.title_detail}>
             <div className={styles.detail_piece}>
               <FieldTimeOutlined />

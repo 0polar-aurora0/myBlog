@@ -3,13 +3,14 @@ import { Button, ConfigProvider } from 'antd';
 /*
  * @Author: fuzhenghao
  * @Date: 2022-06-29 14:29:35
- * @LastEditTime: 2022-06-29 18:52:04
+ * @LastEditTime: 2022-06-29 20:20:49
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\ThemeSwitchButton\index.tsx
  */
 export default () => {
   const onColorChange = () => {
+    console.log('切换主题');
     const theme = {
       primaryColor: '#25B864',
       errorColor: '#1890ff',
@@ -22,7 +23,7 @@ export default () => {
   };
 
   return (
-    <Fragment>
+    <>
       <Button
         type="primary"
         onClick={() => {
@@ -34,6 +35,6 @@ export default () => {
       <span style={{ color: 'var(--ant-error-color)' }}>
         var(`--ant-error-color`)
       </span>
-    </Fragment>
+    </>
   );
 };

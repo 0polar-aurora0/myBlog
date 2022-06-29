@@ -1,7 +1,7 @@
 /*
  * @Author: fuzhenghao
  * @Date: 2022-06-07 13:49:22
- * @LastEditTime: 2022-06-19 23:47:56
+ * @LastEditTime: 2022-06-29 20:15:42
  * @LastEditors: fuzhenghao
  * @Description:
  * @FilePath: \myBlog_frontEnd\src\components\ArticleCard\index.tsx
@@ -15,7 +15,10 @@ import { Tag } from 'antd';
 export default (props: Article) => {
   const check_article_detail = (article: Article) => {
     history.push({
-      pathname: `/articlePage/${article.file.id}`,
+      pathname: `/articlePage`,
+      query: {
+        id: article.file.id,
+      },
       state: {
         title: props.title,
       },
